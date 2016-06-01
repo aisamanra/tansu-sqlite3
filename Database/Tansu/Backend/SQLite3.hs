@@ -51,7 +51,7 @@ sqltransact db mote = do
   exec db "END TRANSACTION;"
   return result
 
-withSQLiteDb :: FilePath -> (TansuDb k v -> IO a) -> IO a
+withSQLiteDb :: FilePath -> (TansuDb -> IO a) -> IO a
 withSQLiteDb path mote = do
   exists <- doesFileExist path
   conn <- open (T.pack path)

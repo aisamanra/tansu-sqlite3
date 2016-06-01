@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Main where
 
 import Control.Monad (void)
@@ -16,11 +18,11 @@ main = void $ withSQLiteDb "sample.db" $ \ db -> do
   putStr "looking up key 'three': "
   rs <- run db $ get "three"
   case rs of
-    Right val -> putStrLn val
+    Right val -> print val
     Left _    -> putStrLn "...not in the database."
 
   putStr "looking up key 'five': "
   rs <- run db $ get "five"
   case rs of
-    Right val -> putStrLn val
+    Right val -> print val
     Left _    -> putStrLn "...not in the database."
